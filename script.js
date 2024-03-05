@@ -14,9 +14,8 @@ document.addEventListener("DOMContentLoaded", function() {
         pomodoroTimeDisplay.textContent = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
     }
 
-
     function startTimer() {
-        startBtn.textContent = "Stop"; 
+        startBtn.textContent = "Stop";
         startBtn.classList.remove("active"); 
         timerInterval = setInterval(() => {
             if (seconds === 0) {
@@ -34,16 +33,17 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 1000);
     }
 
-   
+    
     function resetTimer() {
         clearInterval(timerInterval); 
-        isPomodoro ? (minutes = 25) : (minutes = 5);
+        isPomodoro ? (minutes = 25) : (minutes = 5); 
         seconds = 0; 
         updateTimerDisplay(); 
         startBtn.textContent = "Start"; 
-        startBtn.classList.add("active"); 
+        startBtn.classList.add("active");
     }
 
+    
     pomodoroBtn.addEventListener("click", function() {
         if (!isPomodoro) {
             isPomodoro = true; 
@@ -53,29 +53,31 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-
+   
     breakBtn.addEventListener("click", function() {
         if (isPomodoro) {
             isPomodoro = false;
-            resetTimer();
+            resetTimer(); 
             breakBtn.classList.add("active"); 
             pomodoroBtn.classList.remove("active"); 
+        }
     });
 
+    
     startBtn.addEventListener("click", function() {
         if (startBtn.textContent === "Start") {
             startTimer(); 
         } else {
             clearInterval(timerInterval); 
-            startBtn.textContent = "Start"; 
-            startBtn.classList.add("active");
+            startBtn.textContent = "Start";
+            startBtn.classList.add("active"); 
         }
     });
 
- 
     resetBtn.addEventListener("click", function() {
         resetTimer(); 
     });
 
     updateTimerDisplay();
 });
+
